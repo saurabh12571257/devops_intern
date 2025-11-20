@@ -1,4 +1,4 @@
-<img width="689" height="514" alt="Screenshot 2025-11-20 at 19 13 38" src="https://github.com/user-attachments/assets/a6313f3c-fd7b-48ac-a562-a7d1bca99f2e" /># Part 1: Environment Setup
+# Part 1: Environment Setup
 
 - Launched an Ec2 t2.micro instance.
 - SSH into it by running `chmod 400 "docker_prac.pem"` command in downloads folder and then  
