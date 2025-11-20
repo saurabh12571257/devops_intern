@@ -1,4 +1,4 @@
-# Part 1: Environment Setup
+<img width="689" height="514" alt="Screenshot 2025-11-20 at 19 13 38" src="https://github.com/user-attachments/assets/a6313f3c-fd7b-48ac-a562-a7d1bca99f2e" /># Part 1: Environment Setup
 
 - Launched an Ec2 t2.micro instance.
 - SSH into it by running `chmod 400 "docker_prac.pem"` command in downloads folder and then  
@@ -40,4 +40,47 @@
 <img width="899" height="223" alt="Screenshot 2025-11-20 at 18 50 18" src="https://github.com/user-attachments/assets/87470227-96be-421b-9b0b-5437c3de8bd7" />
 
 
-Part 3: Monitoring Script
+# Part 3: Monitoring Script
+
+- Created script `/usr/local/bin/system_report.sh`
+- Gave executable permission:  
+  `sudo chmod +x /usr/local/bin/system_report.sh`
+- Tested the script manually:  
+  `/usr/local/bin/system_report.sh`
+- Opened cron editor:  
+  `sudo crontab -e`
+- Added cron job:  
+  `*/5 * * * * /usr/local/bin/system_report.sh >> /var/log/system_report.log 2>&1`
+- Viewed logs using:  
+  `sudo tail -n 30 /var/log/system_report.log`
+
+<img width="689" height="514" src="https://github.com/user-attachments/assets/287b8439-7a92-4118-9a33-1daa3f22cc3c" />
+
+
+# Part 4: AWS Integration
+
+- Installed AWS CLI using:  
+  `curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`
+- Unzipped:  
+  `unzip awscliv2.zip`
+- Installed AWS:  
+  `sudo ./aws/install`
+- Configured AWS CLI:  
+  `aws configure`
+- Created CloudWatch Log Group:  
+  `aws logs create-log-group --log-group-name /devops/intern-metrics`
+- Created Log Stream:  
+  ```bash
+  aws logs create-log-stream \
+    --log-group-name /devops/intern-metrics \
+    --log-stream-name system-report-stream
+
+<img width="1416" height="864" alt="Screenshot 2025-11-20 at 19 20 41" src="https://github.com/user-attachments/assets/c5b75329-b0f8-4448-adc5-95d13d2c960b" />
+
+<img width="1169" height="357" alt="Screenshot 2025-11-20 at 19 29 24" src="https://github.com/user-attachments/assets/c574c128-51e9-4de5-a3b1-3aec17b12893" />
+
+# Bonus
+
+<img width="954" height="201" alt="Screenshot 2025-11-20 at 19 34 53" src="https://github.com/user-attachments/assets/87ce3d77-0230-4d7b-9b9b-e9dc96be9adc" />
+
+
